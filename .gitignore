@@ -12,6 +12,11 @@ build/
 # Prisma
 apps/api/prisma/migrations/dev.db
 
+.agents
+.claude
+.cursor
+.devin
+
 # Editör / OS
 .DS_Store
 .vscode/

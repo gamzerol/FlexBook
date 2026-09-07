@@ -70,10 +70,24 @@ apiClient.interceptors.response.use(
   },
 );
 
+let hasBootstrapped = false;
+
 export async function bootstrapSession() {
+  if (hasBootstrapped) return;
+  hasBootstrapped = true;
   try {
     await refreshAccessToken();
   } catch {
     // geçerli oturum yok
+  }
+}
+
+export async function logout() {
+  try {
+    await apiClient.post("/api/v1/auth/logout");
+  } catch {
+    //backend'e ulaşamasak bile local state'i temizlemeye devam ediyoruz
+  } finally {
+    useAuthStore.getState().logout();
   }
 }
