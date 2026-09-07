@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+  --color-ink: #14181f;
+  --color-paper: #f7f5ef;
+  --color-page: #edeae2;
+  --color-accent: #c98a3e;
+  --color-accent-ink: #3a2610;
+  --font-display: "Fraunces", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono-time: "IBM Plex Mono", monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
