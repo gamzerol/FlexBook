@@ -8,6 +8,7 @@ node_modules/
 # Build çıktıları
 dist/
 build/
+*.tsbuildinfo
 
 # Prisma
 apps/api/prisma/migrations/dev.db

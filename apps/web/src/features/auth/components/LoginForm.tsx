@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginInput } from "@flexbook/shared";
 import { useLogin } from "../api/useLogin";
 import { ApiError } from "../../../lib/api-client";
+import { Link } from "react-router-dom";
 
 export function LoginForm() {
   const {
@@ -134,9 +135,9 @@ export function LoginForm() {
 
             <p className="font-sans text-[13px] text-neutral-500 text-center m-0">
               Hesabın yok mu?{" "}
-              <a href="/register" className="text-ink font-medium">
+              <Link to="/register" className="text-ink font-medium">
                 Kayıt ol
-              </a>
+              </Link>
             </p>
           </form>
         </div>
