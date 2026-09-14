@@ -5,9 +5,16 @@ import { PrismaModule } from './prisma/prisma.module.js';
 import { AuthModule } from './auth/auth.module.js';
 import { ResourcesModule } from './resources/resources.module.js';
 import { ServicesModule } from './services/services.module.js';
+import { BusinessModule } from './business/business.module.js';
 
 @Module({
-  imports: [PrismaModule, AuthModule, ResourcesModule, ServicesModule],
+  imports: [
+    PrismaModule,
+    AuthModule,
+    ResourcesModule,
+    ServicesModule,
+    BusinessModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

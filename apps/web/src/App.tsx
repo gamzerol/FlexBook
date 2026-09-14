@@ -1,18 +1,17 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { LoginPage } from "./routes/LoginPage";
-import { DashboardPage } from "./routes/DashboardPage";
-import { ProtectedRoute } from "./app/ProtectedRoute";
-import { bootstrapSession } from "./lib/api-client";
 import { RegisterPage } from "./routes/RegisterPage";
+import { DashboardHomePage } from "./routes/DashboardHomePage";
+import { ComingSoonPage } from "./routes/ComingSoonPage";
+import { ProtectedRoute } from "./app/ProtectedRoute";
+import { DashboardLayout } from "./app/DashboardLayout";
+import { bootstrapSession } from "./lib/api-client";
 
 function App() {
   const [isBootstrapping, setIsBootstrapping] = useState(true);
-  const didBootstrap = useRef(false);
 
   useEffect(() => {
-    if (didBootstrap.current) return;
-    didBootstrap.current = true;
     bootstrapSession().finally(() => setIsBootstrapping(false));
   }, []);
 
@@ -23,19 +22,40 @@ function App() {
       </div>
     );
   }
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <DashboardPage />
+              <DashboardLayout />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route index element={<DashboardHomePage />} />
+          <Route
+            path="resources"
+            element={<ComingSoonPage title="Kaynaklar" />}
+          />
+          <Route
+            path="services"
+            element={<ComingSoonPage title="Hizmetler" />}
+          />
+          <Route
+            path="availability"
+            element={<ComingSoonPage title="Müsaitlik" />}
+          />
+          <Route
+            path="customers"
+            element={<ComingSoonPage title="Müşteriler" />}
+          />
+        </Route>
+
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </BrowserRouter>
