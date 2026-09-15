@@ -70,16 +70,17 @@ apiClient.interceptors.response.use(
   },
 );
 
-let hasBootstrapped = false;
+let bootstrapPromise: Promise<void> | null = null;
 
-export async function bootstrapSession() {
-  if (hasBootstrapped) return;
-  hasBootstrapped = true;
-  try {
-    await refreshAccessToken();
-  } catch {
-    // geçerli oturum yok
+export function bootstrapSession(): Promise<void> {
+  if (!bootstrapPromise) {
+    bootstrapPromise = refreshAccessToken()
+      .catch(() => {
+        //geçerli oturum yok
+      })
+      .then(() => undefined);
   }
+  return bootstrapPromise;
 }
 
 export async function logout() {
