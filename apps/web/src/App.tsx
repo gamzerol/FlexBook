@@ -7,6 +7,8 @@ import { ComingSoonPage } from "./routes/ComingSoonPage";
 import { ProtectedRoute } from "./app/ProtectedRoute";
 import { DashboardLayout } from "./app/DashboardLayout";
 import { bootstrapSession } from "./lib/api-client";
+import { ResourcesPage } from "./features/resources/components/ResourcesPage";
+import { ServicesPage } from "./features/services/components/ServicesPage";
 
 function App() {
   const [isBootstrapping, setIsBootstrapping] = useState(true);
@@ -38,14 +40,8 @@ function App() {
           }
         >
           <Route index element={<DashboardHomePage />} />
-          <Route
-            path="resources"
-            element={<ComingSoonPage title="Kaynaklar" />}
-          />
-          <Route
-            path="services"
-            element={<ComingSoonPage title="Hizmetler" />}
-          />
+          <Route path="resources" element={<ResourcesPage />} />
+          <Route path="services" element={<ServicesPage />} />
           <Route
             path="availability"
             element={<ComingSoonPage title="Müsaitlik" />}
