@@ -1,11 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import {
-  IconCalendar,
-  IconUsers,
-  IconScissors,
-  IconClock,
-  IconAddressBook,
-} from "@tabler/icons-react";
+import { IconCalendar, IconUsers, IconScissors, IconClock, IconAddressBook } from "@tabler/icons-react";
 
 const NAV_ITEMS = [
   { to: "/dashboard", label: "Rezervasyonlar", icon: IconCalendar, end: true },
@@ -17,14 +11,15 @@ const NAV_ITEMS = [
 
 export function DashboardLayout() {
   return (
-    <div className="min-h-screen w-full flex bg-paper">
-      <aside className="w-[220px] min-w-[200px] bg-ink p-6 flex flex-col gap-7">
-        <div className="flex items-center gap-2">
-          <div className="w-1 h-[18px] bg-accent rounded-sm" />
-          <span className="font-display font-semibold text-lg text-paper">
-            FlexBook
-          </span>
+    <div className="min-h-screen w-full flex bg-page">
+      <aside className="w-[220px] min-w-[200px] bg-surface border-r border-border p-5 flex flex-col gap-7">
+        <div className="flex items-center gap-2 px-1">
+          <div className="w-[20px] h-[20px] rounded-md bg-accent flex items-center justify-center">
+            <div className="w-1.5 h-1.5 rounded-sm bg-white" />
+          </div>
+          <span className="font-bold text-[15px] text-ink">FlexBook</span>
         </div>
+
         <nav className="flex flex-col gap-0.5">
           {NAV_ITEMS.map(({ to, label, icon: Icon, end }) => (
             <NavLink
@@ -33,18 +28,13 @@ export function DashboardLayout() {
               end={end}
               className={({ isActive }) =>
                 `flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm ${
-                  isActive
-                    ? "bg-accent/15 text-paper font-medium"
-                    : "text-paper/65 hover:text-paper/90"
+                  isActive ? "bg-page text-ink font-medium" : "text-text-muted hover:bg-page/60"
                 }`
               }
             >
               {({ isActive }) => (
                 <>
-                  <Icon
-                    size={16}
-                    className={isActive ? "text-accent" : "text-paper/50"}
-                  />
+                  <Icon size={16} className={isActive ? "text-ink" : "text-text-muted"} />
                   {label}
                 </>
               )}
@@ -52,6 +42,7 @@ export function DashboardLayout() {
           ))}
         </nav>
       </aside>
+
       <main className="flex-1 min-w-0 p-8">
         <Outlet />
       </main>

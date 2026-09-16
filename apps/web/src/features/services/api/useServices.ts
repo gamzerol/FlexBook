@@ -8,6 +8,7 @@ export interface Service {
   price: string | null;
   description: string | null;
   isActive: boolean;
+  resources: { resource: { id: string; name: string } }[];
 }
 
 export function useServices() {

@@ -10,6 +10,9 @@ export class ServicesService {
     return this.prisma.service.findMany({
       where: { businessId, isActive: true },
       orderBy: { createdAt: 'desc' },
+      include: {
+        resources: { include: { resource: true } },
+      },
     });
   }
 
