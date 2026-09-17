@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module.js';
 import { ResourcesModule } from './resources/resources.module.js';
 import { ServicesModule } from './services/services.module.js';
 import { BusinessModule } from './business/business.module.js';
+import { AvailabilityModule } from './availability/availability.module.js';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { BusinessModule } from './business/business.module.js';
     ResourcesModule,
     ServicesModule,
     BusinessModule,
+    AvailabilityModule,
   ],
   controllers: [AppController],
   providers: [AppService],
