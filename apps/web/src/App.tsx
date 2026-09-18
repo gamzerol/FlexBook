@@ -10,6 +10,7 @@ import { bootstrapSession } from "./lib/api-client";
 import { ResourcesPage } from "./features/resources/components/ResourcesPage";
 import { ServicesPage } from "./features/services/components/ServicesPage";
 import { AvailabilityPage } from "./features/availability/components/AvailabilityPage";
+import { CalendarPage } from "./features/bookings/components/CalendarPage";
 
 function App() {
   const [isBootstrapping, setIsBootstrapping] = useState(true);
@@ -48,6 +49,7 @@ function App() {
             path="customers"
             element={<ComingSoonPage title="Müşteriler" />}
           />
+          <Route path="calendar" element={<CalendarPage />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/dashboard" replace />} />

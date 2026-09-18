@@ -1,8 +1,16 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { IconCalendar, IconUsers, IconScissors, IconClock, IconAddressBook } from "@tabler/icons-react";
+import {
+  IconCalendar,
+  IconLayoutGrid,
+  IconUsers,
+  IconScissors,
+  IconClock,
+  IconAddressBook,
+} from "@tabler/icons-react";
 
 const NAV_ITEMS = [
   { to: "/dashboard", label: "Rezervasyonlar", icon: IconCalendar, end: true },
+  { to: "/dashboard/calendar", label: "Takvim", icon: IconLayoutGrid },
   { to: "/dashboard/resources", label: "Kaynaklar", icon: IconUsers },
   { to: "/dashboard/services", label: "Hizmetler", icon: IconScissors },
   { to: "/dashboard/availability", label: "Müsaitlik", icon: IconClock },
@@ -28,13 +36,18 @@ export function DashboardLayout() {
               end={end}
               className={({ isActive }) =>
                 `flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm ${
-                  isActive ? "bg-page text-ink font-medium" : "text-text-muted hover:bg-page/60"
+                  isActive
+                    ? "bg-page text-ink font-medium"
+                    : "text-text-muted hover:bg-page/60"
                 }`
               }
             >
               {({ isActive }) => (
                 <>
-                  <Icon size={16} className={isActive ? "text-ink" : "text-text-muted"} />
+                  <Icon
+                    size={16}
+                    className={isActive ? "text-ink" : "text-text-muted"}
+                  />
                   {label}
                 </>
               )}
