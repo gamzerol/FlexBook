@@ -130,17 +130,17 @@ export function CreateBookingModal({ onClose }: { onClose: () => void }) {
 
           <div>
             <label className="text-xs font-medium text-text-secondary block mb-1.5">
-              Müşteri e-posta
+              Müşteri telefonu
             </label>
             <input
-              type="email"
-              placeholder="ayse@example.com"
-              {...register("customerEmail")}
+              type="tel"
+              placeholder="05XX XXX XX XX"
+              {...register("customerPhone")}
               className="w-full bg-page border-0 rounded-lg px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-accent/30"
             />
-            {errors.customerEmail && (
+            {errors.customerPhone && (
               <p className="text-xs text-red-600 mt-1">
-                {errors.customerEmail.message}
+                {errors.customerPhone.message}
               </p>
             )}
           </div>

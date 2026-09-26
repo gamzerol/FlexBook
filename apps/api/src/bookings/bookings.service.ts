@@ -49,12 +49,12 @@ export class BookingsService {
 
     return this.prisma.$transaction(async (tx) => {
       const customer = await tx.customer.upsert({
-        where: { businessId_email: { businessId, email: input.customerEmail } },
+        where: { businessId_phone: { businessId, phone: input.customerPhone } },
         update: { name: input.customerName },
         create: {
           businessId,
           name: input.customerName,
-          email: input.customerEmail,
+          phone: input.customerPhone,
         },
       });
 

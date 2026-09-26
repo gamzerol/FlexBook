@@ -11,7 +11,7 @@ export interface Booking {
   status: BookingStatus;
   resource: { id: string; name: string };
   service: { id: string; name: string };
-  customer: { id: string; name: string; email: string };
+  customer: { id: string; name: string; phone: string };
 }
 
 interface BookingFilters {

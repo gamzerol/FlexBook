@@ -111,13 +111,13 @@ model Customer {
   businessId String
   business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
   name       String
-  email      String
-  phone      String?
+  phone      String
+  email      String?
   createdAt  DateTime @default(now())
 
   bookings Booking[]
 
-  @@unique([businessId, email])
+  @@unique([businessId, phone])
 }
 
 model Booking {
