@@ -9,8 +9,8 @@ export const createBookingSchema = z
     serviceId: z.string().uuid(),
     customerName: z.string().min(2, "Müşteri adı en az 2 karakter olmalı"),
     customerPhone: z.string().regex(PHONE_REGEX, "Geçerli bir cep telefonu girin (05XX XXX XX XX)"),
-    startTime: z.coerce.date(),
-    endTime: z.coerce.date(),
+    startTime: z.coerce.date<string>(),
+    endTime: z.coerce.date<string>(),
   })
   .refine((data) => data.endTime > data.startTime, {
     message: "Bitiş saati başlangıçtan sonra olmalı",
@@ -19,14 +19,7 @@ export const createBookingSchema = z
 
 export type CreateBookingInput = z.infer<typeof createBookingSchema>;
 
-export type CreateBookingFormValues = {
-  resourceId: string;
-  serviceId: string;
-  customerName: string;
-  customerPhone: string;
-  startTime: string;
-  endTime: string;
-};
+export type CreateBookingFormValues = z.input<typeof createBookingSchema>;
 
 export const bookingStatusSchema = z.enum([
   "PENDING",
